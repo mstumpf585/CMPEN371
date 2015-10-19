@@ -1,4 +1,14 @@
-
+----------------------------------------------------------------------------
+-- Entity:        procDATA
+-- Written By:    Michael Stumpf 
+-- Date Created:  10 OCT 15
+-- Description:   takes the scan code and outputs what arrow pressed
+--
+-- Revision History (10/14/15):
+-- 
+-- Dependencies:
+--		 CounterUpDown_nbit, Reg_nbit
+----------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library mws5966_library;
@@ -42,7 +52,7 @@ begin
 				    DOWN	=> ARROWleft,
 			       CLK 	=> CLK,
 			       CLR 	=> CLR, 
-			       Q 	=> x_int); 
+			       Q 	=> XCOORD); 
 
 	countY: CounterUpDown_nbit
 	generic map (n => 8)
@@ -51,7 +61,7 @@ begin
 				    DOWN	=> ARROWdwn,
 			       CLK 	=> CLK,
 			       CLR 	=> CLR, 
-			       Q 	=> y_int);
+			       Q 	=> YCOORD);
 					 
 	-- define when arrows are on 
 	ARROWup    <= '1' when (CONTROL_out = "1000") else '0';
@@ -63,9 +73,7 @@ begin
 	ARROWleft  <= '1' when (CONTROL_out = "0010") else '0';
 	
 	-- define outputs 
-	XCOORD <= x_int;
 	
-	YCOORD <= y_int;
 	
 	LED15_12	<= CONTROL_out; 
 end Behavioral;

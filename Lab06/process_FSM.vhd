@@ -1,3 +1,15 @@
+----------------------------------------------------------------------------
+-- Entity:        procFSM
+-- Written By:    Michael Stumpf 
+-- Date Created:  10 OCT 15
+-- Description:   determines which key is pressed and sends out its code based on one hot 
+--
+-- Revision History (10/14/15):
+-- 
+-- Dependencies:
+--		proc data
+----------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -13,7 +25,7 @@ end process_FSM;
 
 architecture Behavioral of process_FSM is
 
-type STATE_TYPE is (RESET_STATE, IDLE, LOAD_STATE, WAIT1, ARROWSon, ARROWSoff);
+type STATE_TYPE is (RESET_STATE, IDLE, LOAD_STATE, WAIT1, ARROWSon, ARROWSoff, arrow75, arrow6b);
 	
 	signal presentState : STATE_TYPE; 
 	signal nextState	  : STATE_TYPE;
@@ -86,22 +98,27 @@ begin
 		
 			when ARROWSon => 
 				
+				CONTROL_out <= "0000";
 				if(SCANCODE = x"75") then 
-					CONTROL_out <= "0001";
-					
-				elsif(SCANCODE = x"6b") then
-					CONTROL_out <= "0100";
-					
-				elsif(SCANCODE = x"72") then 
-					CONTROL_out <= "0010";
-					
-				elsif(SCANCODE = x"74") then 
-					CONTROL_out <= "0001";
+					nextState <= arrow75;
+				elsif(SCANCODE = x"6b") then 
+					nextState <= arrow6b;
 				else 
-					CONTROL_out <= "0000";
+					nextState <= IDLE;
+					
 				end if; 
 				
+		
+			when arrow75 => 
+				
+				CONTROL_out <= "0001";
 				nextState <= IDLE;
+				
+			when arrow6b => 
+			
+				CONTROL_out <= "0010";
+				nextState <= IDLE; 
+				
 		-- ARROWSoff 
 		-- Stays in wait2 till KBCLK goes low 
 		
@@ -109,6 +126,12 @@ begin
 				CONTROL_out <= "0000"; 
 				
 				nextState <= IDLE; 
+				
+			when others => 
+				CONTROL_out <= "0000";
+				
+				nextState <= IDLE; 
+				
 				end case; 
 		end process; 
 end Behavioral;

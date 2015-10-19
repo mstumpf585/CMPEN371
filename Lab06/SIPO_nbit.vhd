@@ -31,8 +31,9 @@ begin
 				elsif (LSHIFT = '1') then
 					  Q_int <= Q_int(n-1 downto 1) & D;
 				end if;
-				Q <= Q_int;
+				
 			end if;
 		end process;
+		Q <= Q_int;
 end Behavioral;
 

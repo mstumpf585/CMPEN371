@@ -29,9 +29,7 @@ process (CLK) is
 					 
 				elsif( Rshift = '0' and CLR = '1') then 
 					 Q_int <= (OTHERS => '0');
-					 
-				else 
-					Q_int <= Q_int; 
+					  
 				 end if;
 			end if;
 		end process;

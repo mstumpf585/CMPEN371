@@ -1,6 +1,14 @@
-----------------------------------------------------------------------------------
-
-----------------------------------------------------------------------------------
+----------------------------------------------------------------------------
+-- Entity:        ReadFSM
+-- Written By:    Michael Stumpf 
+-- Date Created:  10 OCT 15
+-- Description:   control to read in the scan code and store them in a register 
+--
+-- Revision History (10/14/15):
+-- 
+-- Dependencies:
+--		read data
+----------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -109,7 +117,7 @@ begin
 				if(LES = '1') then 
 					nextState <= WAIT1;
 					
-				else 
+				else
 					nextState <= CODE_READY_STATE;
 					
 				end if;
@@ -189,10 +197,7 @@ begin
 				CODE_READY <= '1';
 				state_loc  <="0111";
 				
-				if(KBCLK = '0') then 
-					nextState <= CODE_READY_STATE;
-				
-				elsif(KBCLK = '1') then
+				if(KBCLK = '1') then
 					nextState <= IDLE;
 					
 				else 
