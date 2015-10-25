@@ -173,6 +173,13 @@ package mws5966_Components is
 				SEGMENT     : out  STD_LOGIC_VECTOR(0 to 6));
 	end component;
 	
+	component IMAGE_GEN is
+		port( X_in	  : in STD_LOGIC_VECTOR(9 downto 0);
+				Y_in	  : in STD_LOGIC_VECTOR(9 downto 0);
+				RGB_in  : in STD_LOGIC_VECTOR(12 downto 0);  
+				RGB_out : out STD_LOGIC_VECTOR(12 downto 0));  
+	end component;
+
 	component MAX_nbit is
 	 generic( N       : integer);
     Port   ( A_top 	: in  STD_LOGIC_VECTOR(n-1 downto 0);
@@ -295,6 +302,16 @@ package mws5966_Components is
 			  Rshift : in STD_LOGIC;
 			  Q      : out STD_LOGIC_VECTOR(31 downto 0));
 	end component;
+	
+	component VHD_Control is		-- I know, I know its VGA 
+	port (CLK 	  : in  STD_LOGIC;
+			RGB_in  : in  STD_LOGIC_VECTOR(11 downto 0); 
+			H_sync  : out STD_LOGIC;
+			V_sync  : out STD_LOGIC;
+			X_out   : out STD_LOGIC_VECTOR(9 downto 0);
+			Y_out   : out STD_LOGIC_VECTOR(9 downto 0);
+			RGB_out : out STD_LOGIC_VECTOR(11 downto 0)); 
+	end component;	
 
 	component WordTo8dig7seg is
 		Port (STROBE   : in STD_LOGIC;
