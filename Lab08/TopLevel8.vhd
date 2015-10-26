@@ -18,6 +18,7 @@ architecture Behavioral of TopLevel8 is
 signal X_int 	: STD_LOGIC_VECTOR(9 downto 0);
 signal Y_int 	: STD_LOGIC_VECTOR(9 downto 0);
 signal RGB_int : STD_LOGIC_VECTOR(11 downto 0);
+
 component IMAGE_GEN is
 	port( X_in	  : in STD_LOGIC_VECTOR(9 downto 0);
 			Y_in	  : in STD_LOGIC_VECTOR(9 downto 0);
