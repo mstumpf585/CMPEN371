@@ -17,8 +17,7 @@ architecture Behavioral of TopLevel8 is
 
 signal X_int 	: STD_LOGIC_VECTOR(9 downto 0);
 signal Y_int 	: STD_LOGIC_VECTOR(9 downto 0);
-signal RBG_int : STD_LOGIC_VECTOR(11 downto 0);
-
+signal RGB_int : STD_LOGIC_VECTOR(11 downto 0);
 component IMAGE_GEN is
 	port( X_in	  : in STD_LOGIC_VECTOR(9 downto 0);
 			Y_in	  : in STD_LOGIC_VECTOR(9 downto 0);
@@ -30,17 +29,17 @@ begin
 		
 	VGA: VHD_Control 
 		port map(CLK 	  =>  CLK,
-				   RGB_in  =>  SWITCHES(11 downto 0), 
+				   RGB_in  =>  RGB_int, 
 					H_sync  =>  H_sync,
 					V_sync  =>	V_sync,
 					X_out   =>	X_int,
 					Y_out   =>	Y_int,
-					RGB_out =>	RBG_int);
+					RGB_out =>	RGB_out);
 					
 	IMG: IMAGE_GEN
 		port map(X_in    => X_int,
 					Y_in    => Y_int,
-					RGB_in  => RBG_int,
-					RGB_out => RGB_out);
+					RGB_in  => SWITCHES(11 downto 0),
+					RGB_out => RGB_int);
 					
 end Behavioral;

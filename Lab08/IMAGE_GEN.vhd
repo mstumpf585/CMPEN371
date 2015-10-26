@@ -32,19 +32,19 @@ begin
 						B	   => "1001110110" ,	
 						GRT   => XGRT);
 						
-	LESY: compareLES
-		generic map(N => 10) 
-		port map	  (A	   => y_in,	
-						B	   => "0000001010",	
-						LES   => YLES);
-					
-	GRTY: compareGRT
-		generic map(N => 10) 
-		port map	  (A	   => Y_in,	
-						B	   => "0010000000",	
-						GRT   => YGRT);
+--	LESY: compareLES
+--		generic map(N => 10) 
+--		port map	  (A	   => y_in,	
+--						B	   => "0000001010",	
+--						LES   => YLES);
+--					
+--	GRTY: compareGRT
+--		generic map(N => 10) 
+--		port map	  (A	   => Y_in,	
+--						B	   => "0010000000",	
+--						GRT   => YGRT);
 
-RGB_out <= NOT RGB_in when ( YLES='1'  or XLES = '1' OR XGRT='1'  ) else --OR  OR YGRT='1'
+RGB_out <= NOT RGB_in when (  XLES = '1' OR XGRT='1' ) else -- OR YGRT='1' OR YLES='1'
 				RGB_in;
 				
 end Behavioral;
