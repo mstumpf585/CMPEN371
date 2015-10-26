@@ -5,7 +5,9 @@ library mws5966_library;
 use mws5966_library.mws5966_components.ALL;
 
 entity IMAGE_GEN is
-	port( X_in	  : in STD_LOGIC_VECTOR(9 downto 0);
+	port(	BUTTON  : in STD_LOGIC_VECTOR(1 TO 5);
+	   	CLK	  : in STD_LOGIC;
+			X_in	  : in STD_LOGIC_VECTOR(9 downto 0);
 			Y_in	  : in STD_LOGIC_VECTOR(9 downto 0);
 			RGB_in  : in STD_LOGIC_VECTOR(11 downto 0);  
 			RGB_out : out STD_LOGIC_VECTOR(11 downto 0));  
@@ -13,13 +15,50 @@ end IMAGE_GEN;
 
 architecture Behavioral of IMAGE_GEN is
 
+-- boarder compares 
 signal XLES : STD_LOGIC;
 signal XGRT : STD_LOGIC;
 signal YLES : STD_LOGIC;
 signal YGRT : STD_LOGIC;
 
-begin
+-- box signals 
+-- enables to counterss
+signal ENX  : STD_LOGIC;
+signal ENY  : STD_LOGIC;
 
+-- counters 
+signal UpDwnX_int 		  : STD_LOGIC_VECTOR(9 downto 0);
+signal UpDwnY_int 		  : STD_LOGIC_VECTOR(9 downto 0);
+signal sumX_int 			  : STD_LOGIC_VECTOR(9 downto 0);
+signal sumY_int 			  : STD_LOGIC_VECTOR(9 downto 0);
+signal UDX_en		        : STD_LOGIC;
+signal UDY_en		        : STD_LOGIC;
+
+-- comparitors for box 
+signal XLesBox	 			  : STD_LOGIC;
+signal XGrtBox	 			  : STD_LOGIC;
+signal YLesBox	 			  : STD_LOGIC;
+signal YGrtBox	 			  : STD_LOGIC;
+signal INBox	 			  : STD_LOGIC;
+
+--Debounce signals 
+signal DB_BTNR 			  : STD_LOGIC;
+signal DB_BTNL 			  : STD_LOGIC;
+signal DB_BTNU 			  : STD_LOGIC;
+signal DB_BTND 			  : STD_LOGIC;
+signal sample_pulse       : STD_LOGIC;
+signal sample_pulse_count : STD_LOGIC;
+
+-- BTN aliass
+alias BTNL : STD_LOGIC is BUTTON(1);
+alias BTNR : STD_LOGIC is BUTTON(2);
+alias BTNU : STD_LOGIC is BUTTON(3);
+alias BTND : STD_LOGIC is BUTTON(4);
+alias BTNC : STD_LOGIC is BUTTON(5);
+
+begin
+	
+	-- boarders --------------------------------------------------------------
 	LESX: compareLES
 		generic map(N => 10) 
 		port map	  (A	   => X_in,	
@@ -29,13 +68,13 @@ begin
 	GRTX: compareGRT
 		generic map(N => 10) 
 		port map	  (A	   => X_in,	
-						B	   => "1001110110" ,	
+						B	   => "1001110100" ,	
 						GRT   => XGRT);
 						
 	LESY: compareLES
 		generic map(N => 10) 
 		port map	  (A	   => y_in,	
-						B	   => "0000001110",	
+						B	   => "0000001010",	
 						LES   => YLES);
 					
 	GRTY: compareGRT
@@ -43,9 +82,118 @@ begin
 		port map	  (A	   => Y_in,	
 						B	   => "0111010100",	
 						GRT   => YGRT);
+	
+	-- Box ---------------------------------------------------------------------
+	ENX <= NOT(XGRT and XLES);
+	ENY <= NOT(YGRT and YLES);
+	
+	-- Debouncers ------------
+	BDR: Debounce
+		port map(D			=> BTNR,     
+					SAMPLE   => sample_pulse,
+					CLK      => CLK,
+					Q        => DB_BTNR);
+					
+	BDL: Debounce
+		port map(D			=> BTNL,     
+					SAMPLE   => sample_pulse,
+					CLK      => CLK,
+					Q        => DB_BTNL);
+					
+	BDU: Debounce
+		port map(D			=> BTNU,     
+					SAMPLE   => sample_pulse,
+					CLK      => CLK,
+					Q        => DB_BTNU);
+					
+	BDD: Debounce
+		port map(D			=> BTND,     
+					SAMPLE   => sample_pulse,
+					CLK      => CLK,
+					Q        => DB_BTND);
+					
+	PULSE1 : PulseGenerator 
+		generic map (24, 10000000) 
+		port map 	(EN    	    => '1',
+					    CLK   	    => CLK,
+					    CLR  		 => '0',
+					    PULSE_OUT   => sample_pulse);
+						 
+	PULSE2 : PulseGenerator 
+		generic map (20, 1000000) 
+		port map 	(EN    	    => '1',
+					    CLK   	    => CLK,
+					    CLR  		 => '0',
+					    PULSE_OUT   => sample_pulse_count);
+					 
+	-- X part----------------- 
+	UDX_EN <= sample_pulse_count ; 
+	
+	UpDwnX: CounterUpDown_nbit
+		 generic map(n      => 10)
+		 port map   (EN 	  => sample_pulse_count,	
+						 UP 	  => DB_BTNR,
+					    DOWN	  => DB_BTNL,
+						 CLK 	  => CLK,
+						 CLR 	  => '0',
+						 Q 	  => UpDwnX_int);
+						 
+	RCAX: RCA_nbit 
+			  generic map(N => 10) 
+			  port map	 (A	  => UpDwnX_int,	
+							  B	  => "0000010000",	
+							  c_in  => '0',
+							  c_out => open, 
+							  SUM	  => SUMX_int);		
+							  
+	LESXBox: compareLES
+		generic map(N => 10) 
+		port map	  (A	   => X_in,	
+						B	   => SUMX_int,	
+						LES   => XLesBox);
+					
+	GRTXBox: compareGRT
+		generic map(N => 10) 
+		port map	  (A	   => X_in,	
+						B	   => UpDwnX_int,	
+						GRT   => XGrtBox);
+						
+	-- Y part -------------------		
+	UDY_EN <= sample_pulse_count ;
+	
+	UpDwnY: CounterUpDown_nbit
+		 generic map(n      => 10)
+		 port map   (EN 	  => sample_pulse_count,	
+						 UP 	  => DB_BTNU,
+					    DOWN	  => DB_BTND,
+						 CLK 	  => CLK,
+						 CLR 	  => BTNC,
+						 Q 	  => UpDwnY_int);
+						 			  
+	RCAY: RCA_nbit 
+			  generic map(N => 10) 
+			  port map	 (A	  => UpDwnY_int,	
+							  B	  => "0000010000",	
+							  c_in  => '0',
+							  c_out => open, 
+							  SUM	  => SUMY_int);
+	
+	LESYBox: compareLES
+		generic map(N => 10) 
+		port map	  (A	   => y_in,	
+						B	   => SUMY_int,	
+						LES   => YLesBox);
+					
+	GRTYBox: compareGRT
+		generic map(N => 10) 
+		port map	  (A	   => Y_in,	
+						B	   => UpDwnY_int,	
+						GRT   => YGrtBox);
 
-RGB_out <= NOT RGB_in when (  XLES = '1' OR XGRT='1' OR YGRT='1' OR YLES='1' ) else -- 
-				RGB_in;
+	-- and box comparitors 
+	InBox <= XLesBox and XGrtBox and YLesBox and YGrtBox;
+	RGB_out <= NOT RGB_in when (  XLES = '1' OR XGRT='1' OR YGRT='1' OR YLES='1' or InBox = '1') else -- 
+					RGB_in;
 				
 end Behavioral;
 
