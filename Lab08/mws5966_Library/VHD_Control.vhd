@@ -124,9 +124,9 @@ begin
 	VcountClr <= '1' when (RollH = '1' and PixelCLK = '1' and RollV = '1') else '0'; 
 	
 	-- DFFS------------------------------------------------------------------------	
-	DFFreg_in <= '1' when (Hactive = '1' and Vactive = '1') else '0'; 
-	DFFH_in   <= '1' when (H_LT656 = '1' or H_6T751 = '1') else '0'; 
-	DFFV_in   <= '1' when (V_LT490 = '1' or V_GT491 = '1') else '0'; 
+	DFFreg_in <=(Hactive and Vactive); 
+	DFFH_in   <= (H_LT656 or H_6T751) ; 
+	DFFV_in   <= (V_LT490 or V_GT491) ; 
 	
 	DFFreg: D_flip_flop_CE 
 		port map  (D   => DFFreg_in,

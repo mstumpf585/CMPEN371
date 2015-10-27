@@ -37,17 +37,6 @@ architecture Structural of AdderSubtractor_nbit is
 		
 begin
 
-
-		--Logic for Invert or Pass (0...3)
-		BXOR(7) <= B(7) xor SUBTRACT;
-		BXOR(6) <= B(6) xor SUBTRACT;
-		BXOR(5) <= B(5) xor SUBTRACT;
-		BXOR(4) <= B(4) xor SUBTRACT;
-		BXOR(3) <= B(3) xor SUBTRACT;
-		BXOR(2) <= B(2) xor SUBTRACT;
-		BXOR(1) <= B(1) xor SUBTRACT;
-		BXOR(0) <= B(0) xor SUBTRACT;
-	
 		RCA: RCA_nbit 
 			  generic map(N => N) 
 			  port map	 (A	  => A,	
@@ -56,8 +45,12 @@ begin
 							  c_out => open, 
 							  SUM	  => SUM_int);
 
-		
-		
+		--Logic for Invert or Pass (0...3)
+		genXORS: for i in 0 to n-1 generate
+		begin
+			BXOR(i) <= B(i) xor SUBTRACT;
+		end generate;
+	
 		--Logic for OVERFLOW
 		OVERFLOW <= (SUBTRACT and ((A(N-1) and (not B(N-1)) and (not SUM_int(N-1))) or ((not A(N-1)) and B(N-1) and SUM_int(N-1)))) or ((not SUBTRACT) and (((not A(N-1)) and (not B(N-1)) and SUM_int(N-1)) or (A(N-1) and B(N-1) and not(SUM_int(N-1)))));
 		

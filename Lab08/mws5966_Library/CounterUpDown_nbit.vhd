@@ -32,23 +32,19 @@ signal   count : STD_LOGIC_VECTOR (n-1 downto 0):= (others => '0') ;
 
 begin
 	
-	process (CLK) is 
-	begin 
-		if (CLK'event and CLK='1') then 
-			if(CLR = '1') then 
-				count <= (others => '0'); 
-				--Q <= (others => '0');
-				
-			elsif (UP = '1' and EN = '1') then
-				count <= STD_LOGIC_VECTOR(unsigned(count)+1);
-				
-			elsif(DOWN = '1' and EN = '1') then
-				count <= STD_LOGIC_VECTOR(unsigned(count)-1); 
-			else
-				count <= (others => '0');
+	process (CLK, count) is 
+		begin 
+			if (CLK'event and CLK='1') then 
+				if ( EN ='1') then	
+					if(up = '1') then
+						count <= STD_LOGIC_VECTOR(unsigned(count)+1);
+					elsif (down = '1') then 
+						count <= STD_LOGIC_VECTOR(unsigned(count)-1);
+					elsif(CLR = '1') then 
+						count <= (others => '0');
+					end if;
+				end if;
 			end if;
-		end if;
+			Q <= count; 
 	end process;
-	
-	Q <= count;
 end Behavioral;
