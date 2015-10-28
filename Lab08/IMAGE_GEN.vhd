@@ -22,17 +22,17 @@ signal YLES 				  : STD_LOGIC;
 signal YGRT 				  : STD_LOGIC;
 
 -- box signals 
--- enables to counterss
-signal ENX  				  : STD_LOGIC;
-signal ENY  				  : STD_LOGIC;
-
 -- counters 
 signal UpDwnX_int 		  : STD_LOGIC_VECTOR(9 downto 0);
 signal UpDwnY_int 		  : STD_LOGIC_VECTOR(9 downto 0);
+
+-- RCA 
 signal sumX_intR 			  : STD_LOGIC_VECTOR(9 downto 0);
 signal sumX_intL 			  : STD_LOGIC_VECTOR(9 downto 0);
 signal sumY_intU 			  : STD_LOGIC_VECTOR(9 downto 0);
 signal sumY_intD 			  : STD_LOGIC_VECTOR(9 downto 0);
+
+-- comparitors 
 signal CountRight		     : STD_LOGIC;
 signal CountLeft		     : STD_LOGIC;
 signal CountUp		     	  : STD_LOGIC;
@@ -59,7 +59,7 @@ signal DB_BTND 			  : STD_LOGIC;
 signal sample_pulse       : STD_LOGIC;
 signal sample_pulse_count : STD_LOGIC;
 
--- BTN aliass
+-- BTN alias
 alias BTNL : STD_LOGIC is BUTTON(1);
 alias BTNR : STD_LOGIC is BUTTON(2);
 alias BTNU : STD_LOGIC is BUTTON(3);
@@ -68,7 +68,7 @@ alias BTNC : STD_LOGIC is BUTTON(5);
 
 begin
 	
-	-- boarders --------------------------------------------------------------
+	-- borders --------------------------------------------------------------
 	LESX: compareLES
 		generic map(N => 10) 
 		port map	  (A	   => X_in,	
@@ -78,7 +78,7 @@ begin
 	GRTX: compareGRT
 		generic map(N => 10) 
 		port map	  (A	   => X_in,	
-						B	   => "1001110100" ,	
+						B	   => "1001110110" ,	
 						GRT   => XGRT);
 						
 	LESY: compareLES
@@ -90,13 +90,10 @@ begin
 	GRTY: compareGRT
 		generic map(N => 10) 
 		port map	  (A	   => Y_in,	
-						B	   => "0111010100",	
+						B	   => "0111010110",	
 						GRT   => YGRT);
 	
 	-- Box ---------------------------------------------------------------------
-	--ENX <= NOT(XGRT and XLES);
-	--ENY <= NOT(YGRT and YLES);
-	
 	-- Debouncers ------------
 	BDR: Debounce
 		port map(D			=> BTNR,     
@@ -175,14 +172,15 @@ begin
 	BorderLeft: compareGRT
 		generic map(N => 10) 
 		port map	  (A	   => SUMX_intL,	
-						B	   => "0000001010" ,	
+						B	   => "0000001001" ,	
 						GRT   => LeftBorder);
 						
 	BorderRight: compareLES
 		generic map(N => 10) 
 		port map	  (A	   => SUMX_intR,	
-						B	   => "1001110100" ,	
+						B	   => "1001110111" ,	
 						LES   => RightBorder);
+						
 	-- Y part -------------------		
 	CountUp	 <= DB_BTNU and UpBorder;
 	CountDown <= DB_BTND and DownBorder;
@@ -228,17 +226,19 @@ begin
 	BorderUp: compareGRT
 		generic map(N => 10) 
 		port map	  (A	   => SUMY_intU,	
-						B	   => "0000001010" ,	
+						B	   => "0000001001" ,	
 						GRT   => UpBorder);
 						
 	BorderDown: compareLES
 		generic map(N => 10) 
 		port map	  (A	   => SUMY_intD,	
-						B	   => "0111010100" ,	
+						B	   => "0111010111" ,	
 						LES   => DownBorder);
-	-- and box comparitors 
-	RGB_out <= NOT RGB_in when (  XLES = '1' OR XGRT='1' OR YGRT='1' OR YLES='1') else -- 
-				  "111111111111" when (XLesBox = '1' and XGrtBox = '1' and YLesBox = '1' and YGrtBox = '1') else 
+						
+	-- and box comparitors
+	INBox <= XLesBox and XGrtBox and YLesBox and YGrtBox; 
+	RGB_out <= NOT RGB_in when (  XLES = '1' OR XGRT='1' OR YGRT='1' OR YLES='1' or INBox = '1') else 
+				  --"000011111111" when (XLesBox = '1' and XGrtBox = '1' and YLesBox = '1' and YGrtBox = '1') else 
 					RGB_in;
 				
 end Behavioral;
