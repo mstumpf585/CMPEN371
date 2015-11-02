@@ -1,0 +1,528 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 1
+-n 3 -fastpaths -xml mws5966.twx mws5966.ncd -o mws5966.twr mws5966.pcf -ucf
+Nexys4DDR_Master.ucf
+
+Design file:              mws5966.ncd
+Physical constraint file: mws5966.pcf
+Device,package,speed:     xc7a100t,csg324,C,-1 (PRODUCTION 1.10 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 
+50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 124 paths analyzed, 47 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   2.987ns.
+--------------------------------------------------------------------------------
+
+Paths for end point PWM2/count/count_1 (SLICE_X4Y74.SR), 8 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.013ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_4 (FF)
+  Destination:          PWM2/count/count_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.913ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_4 to PWM2/count/count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.AQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_4
+    SLICE_X5Y74.D2       net (fanout=5)        0.867   PWM2/count/count<4>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      2.913ns (1.133ns logic, 1.780ns route)
+                                                       (38.9% logic, 61.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.154ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_6 (FF)
+  Destination:          PWM2/count/count_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.772ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_6 to PWM2/count/count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.CQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_6
+    SLICE_X5Y74.D3       net (fanout=3)        0.726   PWM2/count/count<6>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      2.772ns (1.133ns logic, 1.639ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.423ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_7 (FF)
+  Destination:          PWM2/count/count_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.503ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_7 to PWM2/count/count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.DQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_7
+    SLICE_X5Y74.D5       net (fanout=3)        0.457   PWM2/count/count<7>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      2.503ns (1.133ns logic, 1.370ns route)
+                                                       (45.3% logic, 54.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point PWM2/count/count_2 (SLICE_X4Y74.SR), 8 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.013ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_4 (FF)
+  Destination:          PWM2/count/count_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.913ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_4 to PWM2/count/count_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.AQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_4
+    SLICE_X5Y74.D2       net (fanout=5)        0.867   PWM2/count/count<4>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_2
+    -------------------------------------------------  ---------------------------
+    Total                                      2.913ns (1.133ns logic, 1.780ns route)
+                                                       (38.9% logic, 61.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.154ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_6 (FF)
+  Destination:          PWM2/count/count_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.772ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_6 to PWM2/count/count_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.CQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_6
+    SLICE_X5Y74.D3       net (fanout=3)        0.726   PWM2/count/count<6>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_2
+    -------------------------------------------------  ---------------------------
+    Total                                      2.772ns (1.133ns logic, 1.639ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.423ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_7 (FF)
+  Destination:          PWM2/count/count_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.503ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_7 to PWM2/count/count_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.DQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_7
+    SLICE_X5Y74.D5       net (fanout=3)        0.457   PWM2/count/count<7>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_2
+    -------------------------------------------------  ---------------------------
+    Total                                      2.503ns (1.133ns logic, 1.370ns route)
+                                                       (45.3% logic, 54.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point PWM2/count/count_3 (SLICE_X4Y74.SR), 8 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.013ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_4 (FF)
+  Destination:          PWM2/count/count_3 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.913ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_4 to PWM2/count/count_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.AQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_4
+    SLICE_X5Y74.D2       net (fanout=5)        0.867   PWM2/count/count<4>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_3
+    -------------------------------------------------  ---------------------------
+    Total                                      2.913ns (1.133ns logic, 1.780ns route)
+                                                       (38.9% logic, 61.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.154ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_6 (FF)
+  Destination:          PWM2/count/count_3 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.772ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_6 to PWM2/count/count_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.CQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_6
+    SLICE_X5Y74.D3       net (fanout=3)        0.726   PWM2/count/count<6>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_3
+    -------------------------------------------------  ---------------------------
+    Total                                      2.772ns (1.133ns logic, 1.639ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.423ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PWM2/count/count_7 (FF)
+  Destination:          PWM2/count/count_3 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      2.503ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.039ns (0.862 - 0.901)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: PWM2/count/count_7 to PWM2/count/count_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.DQ       Tcko                  0.456   PWM2/count/count<7>
+                                                       PWM2/count/count_7
+    SLICE_X5Y74.D5       net (fanout=3)        0.457   PWM2/count/count<7>
+    SLICE_X5Y74.D        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int_SW0
+    SLICE_X5Y74.C5       net (fanout=1)        0.263   N7
+    SLICE_X5Y74.C        Tilo                  0.124   PWM2/count/count<0>
+                                                       PWM2/EQU_int
+    SLICE_X4Y74.SR       net (fanout=3)        0.650   PWM2/EQU_int
+    SLICE_X4Y74.CLK      Tsrck                 0.429   PWM2/count/count<3>
+                                                       PWM2/count/count_3
+    -------------------------------------------------  ---------------------------
+    Total                                      2.503ns (1.133ns logic, 1.370ns route)
+                                                       (45.3% logic, 54.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point PWM0/DFF/Q (SLICE_X2Y74.A6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.213ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               PWM2/count/count_5 (FF)
+  Destination:          PWM0/DFF/Q (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.250ns (Levels of Logic = 1)
+  Clock Path Skew:      0.037ns (0.334 - 0.297)
+  Source Clock:         CLK_BUFGP rising at 10.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: PWM2/count/count_5 to PWM0/DFF/Q
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y75.BQ       Tcko                  0.141   PWM2/count/count<7>
+                                                       PWM2/count/count_5
+    SLICE_X2Y74.A6       net (fanout=5)        0.184   PWM2/count/count<5>
+    SLICE_X2Y74.CLK      Tah         (-Th)     0.075   PWM0/DFF/Q
+                                                       PWM0/LES_int1
+                                                       PWM0/DFF/Q
+    -------------------------------------------------  ---------------------------
+    Total                                      0.250ns (0.066ns logic, 0.184ns route)
+                                                       (26.4% logic, 73.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point PWM0/DFF/Q (SLICE_X2Y74.A5), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.226ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               PWM2/count/count_3 (FF)
+  Destination:          PWM0/DFF/Q (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.263ns (Levels of Logic = 1)
+  Clock Path Skew:      0.037ns (0.334 - 0.297)
+  Source Clock:         CLK_BUFGP rising at 10.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: PWM2/count/count_3 to PWM0/DFF/Q
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y74.DQ       Tcko                  0.141   PWM2/count/count<3>
+                                                       PWM2/count/count_3
+    SLICE_X2Y74.A5       net (fanout=5)        0.197   PWM2/count/count<3>
+    SLICE_X2Y74.CLK      Tah         (-Th)     0.075   PWM0/DFF/Q
+                                                       PWM0/LES_int1
+                                                       PWM0/DFF/Q
+    -------------------------------------------------  ---------------------------
+    Total                                      0.263ns (0.066ns logic, 0.197ns route)
+                                                       (25.1% logic, 74.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point PWM1/DFF/Q (SLICE_X5Y73.C5), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.267ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               PWM2/count/count_3 (FF)
+  Destination:          PWM1/DFF/Q (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.281ns (Levels of Logic = 1)
+  Clock Path Skew:      0.014ns (0.072 - 0.058)
+  Source Clock:         CLK_BUFGP rising at 10.000ns
+  Destination Clock:    CLK_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: PWM2/count/count_3 to PWM1/DFF/Q
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X4Y74.DQ       Tcko                  0.141   PWM2/count/count<3>
+                                                       PWM2/count/count_3
+    SLICE_X5Y73.C5       net (fanout=5)        0.187   PWM2/count/count<3>
+    SLICE_X5Y73.CLK      Tah         (-Th)     0.047   PWM1/DFF/Q
+                                                       PWM1/LES_int1
+                                                       PWM1/DFF/Q
+    -------------------------------------------------  ---------------------------
+    Total                                      0.281ns (0.094ns logic, 0.187ns route)
+                                                       (33.5% logic, 66.5% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 7.845ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 2.155ns (464.037MHz) (Tbcper_I(Fmax))
+  Physical resource: CLK_BUFGP/BUFG/I0
+  Logical resource: CLK_BUFGP/BUFG/I0
+  Location pin: BUFGCTRL_X0Y31.I0
+  Clock network: CLK_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 9.000ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 10.000ns
+  Low pulse: 5.000ns
+  Low pulse limit: 0.500ns (Tcl)
+  Physical resource: PWM2/count/count<3>/CLK
+  Logical resource: PWM2/count/count_1/CK
+  Location pin: SLICE_X4Y74.CLK
+  Clock network: CLK_BUFGP
+--------------------------------------------------------------------------------
+Slack: 9.000ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 10.000ns
+  High pulse: 5.000ns
+  High pulse limit: 0.500ns (Tch)
+  Physical resource: PWM2/count/count<3>/CLK
+  Logical resource: PWM2/count/count_1/CK
+  Location pin: SLICE_X4Y74.CLK
+  Clock network: CLK_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |    2.987|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 124 paths, 0 nets, and 54 connections
+
+Design statistics:
+   Minimum period:   2.987ns{1}   (Maximum frequency: 334.784MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Sat Oct 31 19:59:49 2015 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 600 MB
+
+
+

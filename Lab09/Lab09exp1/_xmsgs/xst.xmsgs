@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_0&gt; &lt;PWM0/count/count_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_1&gt; &lt;PWM0/count/count_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_2&gt; &lt;PWM0/count/count_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_3&gt; &lt;PWM0/count/count_3&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_4&gt; &lt;PWM0/count/count_4&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_5&gt; &lt;PWM0/count/count_5&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_6&gt; &lt;PWM0/count/count_6&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PWM2/count/count_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mws5966</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PWM1/count/count_7&gt; &lt;PWM0/count/count_7&gt; </arg>
+</msg>
+
+</messages>
+

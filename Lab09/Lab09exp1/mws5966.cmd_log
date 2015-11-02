@@ -1,0 +1,15 @@
+xst -intstyle ise -ifn "C:/Users/Michael/Desktop/CMPENG 371/Lab09/Lab09exp1/mws5966.xst" -ofn "C:/Users/Michael/Desktop/CMPENG 371/Lab09/Lab09exp1/mws5966.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys4DDR_Master.ucf -p xc7a100t-csg324-1 "mws5966.ngc" mws5966.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys4DDR_Master.ucf -p xc7a100t-csg324-1 "mws5966.ngc" mws5966.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys4DDR_Master.ucf -p xc7a100t-csg324-1 "mws5966.ngc" mws5966.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys4DDR_Master.ucf -p xc7a100t-csg324-1 "mws5966.ngc" mws5966.ngd  
+map -intstyle ise -p xc7a100t-csg324-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o mws5966_map.ncd mws5966.ngd mws5966.pcf 
+par -w -intstyle ise -ol high -mt off mws5966_map.ncd mws5966.ncd mws5966.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml mws5966.twx mws5966.ncd -o mws5966.twr mws5966.pcf -ucf Nexys4DDR_Master.ucf 
+bitgen -intstyle ise -f mws5966.ut mws5966.ncd 
+xst -intstyle ise -ifn "C:/Users/Michael/Desktop/CMPENG 371/Lab09/Lab09exp1/mws5966.xst" -ofn "C:/Users/Michael/Desktop/CMPENG 371/Lab09/Lab09exp1/mws5966.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys4DDR_Master.ucf -p xc7a100t-csg324-1 "mws5966.ngc" mws5966.ngd  
+map -intstyle ise -p xc7a100t-csg324-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o mws5966_map.ncd mws5966.ngd mws5966.pcf 
+par -w -intstyle ise -ol high -mt off mws5966_map.ncd mws5966.ncd mws5966.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml mws5966.twx mws5966.ncd -o mws5966.twr mws5966.pcf -ucf Nexys4DDR_Master.ucf 
+bitgen -intstyle ise -f mws5966.ut mws5966.ncd 

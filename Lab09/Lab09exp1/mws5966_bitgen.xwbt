@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Michael\Desktop\CMPENG 371\Lab09\Lab09exp1\mws5966.ncd
+OUTFILE=C:\Users\Michael\Desktop\CMPENG 371\Lab09\Lab09exp1\mws5966.bit
+FAMILY=Artix7
+PART=xc7a100t-1csg324
+WORKINGDIR=C:\Users\Michael\Desktop\CMPENG 371\Lab09\Lab09exp1
+LICENSE=WebPack
+USER_INFO=211080338_0_0_618
