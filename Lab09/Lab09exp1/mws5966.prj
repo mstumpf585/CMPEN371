@@ -1,0 +1,7 @@
+vhdl mws5966_Library "mws5966_Library/mws5966_Components.vhd"
+vhdl mws5966_Library "mws5966_Library/D_flip_flop.vhd"
+vhdl mws5966_Library "mws5966_Library/Counter_nbit.vhd"
+vhdl mws5966_Library "mws5966_Library/CompareLES.vhd"
+vhdl mws5966_Library "mws5966_Library/CompareEQU.vhd"
+vhdl mws5966_Library "mws5966_Library/PWM_control.vhd"
+vhdl work "mws5966.vhd"
